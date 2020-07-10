@@ -72,3 +72,18 @@
 ```
 
 4) vagrant up
+
+##### Inside Ansible Machine
+
+- `$cd /etc/ansible`
+- `$sudo nano hosts`:
+```
+	[web]
+	192.168.10.10 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+	[db]
+	192.168.10.20 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+	[aws]
+	192.168.10.30 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+```
+- `$ansible all -m ping`
+- `$ssh-copy-id vagrant@[ansible_machine_ip]`????

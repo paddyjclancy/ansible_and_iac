@@ -3,12 +3,14 @@
 
 plugins = ['vagrant-hostsupdater']
 plugins.each do |plugin|
-  exec "vagrant plugin install #{plugin}"
+  exec "vagrant plugin install #{plugin}" unless 
+  Vagrant.has_plugin? plugin
 end
 
+# Vagrant in /ansible101 contains fourth machine (with ansible) used in this exercise
 
 # "2" configures version
-Vagrant.config ("2") do |config|
+Vagrant.configure ("2") do |config|
 
   config.vm.define "web" do |web|
     # Specify box
